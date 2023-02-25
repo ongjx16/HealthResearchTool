@@ -1,0 +1,60 @@
+#Turning the pdf page into txt files. The first page is separated in order to better obtain the key takeaways of the research article
+path = "jama2.pdf"
+#Usinf pymupdf
+import fitz  # this is pymupdf
+#extract text page by page
+with fitz.open(path) as doc:
+    pymupdf_text = ""
+    page1 = ""
+    for page in range(0, doc.page_count):
+        current_page = doc[page]
+        if page == 0:
+            page1 += current_page.get_text()
+        else:
+            pymupdf_text += current_page.get_text()
+text_file = open('example.txt', 'w')
+text_file.write(pymupdf_text)
+
+text_file = open('examplepage1.txt', 'w')
+text_file.write(page1)
+
+# Close the PDF file and the text file
+# pdf_file.close()
+text_file.close()
+
+#Parsing the first page txt to separate the key takeaways to be presented to the user
+# Open the text file
+file = open("examplepage1.txt", "r")
+
+# Read the contents of the file
+contents = file.read()
+
+# Search for the specific text
+key = ["IMPORTANCE", "OBJECTIVE", "DESIGN, SETTING, AND PARTICIPANTS", "EXPOSURES", "MAIN OUTCOMES AND MEASURES", "RESULTS", "CONCLUSIONS AND RELEVANCE", "JAMA"]
+
+i, j = 0, 1
+
+while j<=len(key)-1:
+    start_index = contents.find(key[i])
+    end_index = contents.find(key[j])
+    arr.append(contents[start_index:end_index])
+    # print(contents[start_index:end_index])
+    j+=1
+    i+=1
+
+
+# Close the file
+file.close()
+
+# Dividing the pdf page into chunks for better summarization
+with open('example.txt', 'r') as file:
+    text = file.read()
+
+# Split the text into chunks of a specific size
+chunk_size = 3500  # adjust as needed
+chunks = [text[i:i+chunk_size] for i in range(0, len(text), chunk_size)]
+
+# Write each chunk to a separate file
+for i, chunk in enumerate(chunks):
+    with open(f'chunk_{i}.txt', 'w') as chunk_file:
+        chunk_file.write(chunk)
