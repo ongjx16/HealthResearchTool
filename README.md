@@ -1,1 +1,1 @@
-# HealthResearchTool
+# MedSimplifieD
