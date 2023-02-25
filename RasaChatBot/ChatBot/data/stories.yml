@@ -1,0 +1,26 @@
+version: "3.1"
+
+stories:
+  # greet the user, ask for their name and ask them what they want
+  - story: greet and get name
+    steps:
+    - action: utter_greet
+    - intent: greet
+    - action: utter_ask_for_contact_info
+    - intent: supply_user_info
+    - action: utter_help
+    - intent: inform
+      entities:
+      - file: "/Users/summit27/Documents/Uni/Intuition Hackathon/User Persona.pdf"
+    - action: action_upload_file
+
+  # handle user asking for help
+  # - story: handle user asking for help
+  #   steps:
+  #   - intent: needs_help
+  #   - action: utter_help
+  #   - intent: needs
+  #   - slot_was_set:
+  #       - needs: '{{value}}'
+  #   - action: action_store_needs
+  #   - action: utter_needs_stored
