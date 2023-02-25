@@ -11,7 +11,7 @@ function App() {
           styles
         </h1>
         <p className="pt-5 italic">
-          try to follow the prefixed styles below
+          trying out new things
         </p>
         <p className="pb-5 italic">
           [see index.css for font details; see tailwind.config.js for preset colours acc to figma]
