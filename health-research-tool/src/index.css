@@ -1,0 +1,54 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* @font-face {
+    font-family: "Roboto";
+    font-weight: 300;
+    src: url("./public/fonts/Roboto/Roboto-Regular.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "Rubik";
+    font-weight: 400;
+    src: url("./public/fonts/Rubik/Rubik-VariableFont_wght.ttf") format("truetype");
+  }
+
+  @font-face {
+    font-family: "RubikBold";
+    font-weight: 700;
+    src: url("./public/fonts/Rubik/Rubik-VariableFont_wght.ttf") format("truetype");
+  } */
+
+  h1 {
+    @apply text-6xl ;
+  }
+
+  h2 {
+    @apply text-4xl ;
+  }
+
+  h3 {
+    @apply text-2xl ;
+  }
+
+  h4 {
+    @apply text-xl;
+  }
+
+  h5 {
+    @apply text-xl ;
+  }
+
+  p {
+    @apply text-lg;
+  }
+
+  button {
+    @apply text-xl font-bold py-5;
+  }
+
+
+
+}
