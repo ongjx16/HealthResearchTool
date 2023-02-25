@@ -7,22 +7,6 @@ function App() {
   return (
     <div>
       <div className="container mx-auto bg-blue-100 rounded-xl shadow border p-8 m-10 ">
-        <h2>
-          navigation to pages
-        </h2>
-        <p>
-          navigation in header is not done yet so use the links below to navigate first
-        </p>
-        {/* <div className="pt-2">
-          <nav className="p-2">
-            <Link to="/Home">Home</Link> |{" "}
-            <Link to="/Login">Login</Link> |{" "}
-            <Link to="/Signup">Signup</Link> |{" "}
-            <Link to="/Preferences">Preferences</Link> |{" "}
-          </nav>
-        </div> */}
-      </div>
-      <div className="container mx-auto bg-blue-100 rounded-xl shadow border p-8 m-10 ">
         <h1 className="underline mb-0">
           styles
         </h1>
@@ -33,8 +17,7 @@ function App() {
           [see index.css for font details; see tailwind.config.js for preset colours acc to figma]
         </p>
         <h1>
-          <text className="text-yellow">Silver</text>
-          Fun Web
+          <text className="text-yellow">MedSimplifieD</text>
         </h1>
         <h2>
           header 2
