@@ -1,0 +1,116 @@
+version: "3.1"
+
+nlu:
+
+- intent: needs
+  examples: |
+    - Help me [search](needs)
+    - could you provide me with some [info](needs)
+    - Help me search up this [info](needs)
+    - could you help me search up this [paper](needs)
+    - i would like to [research](needs) on this paper
+
+
+
+- intent: supply_user_info
+  examples: |
+   - My name is [Marcus](name).
+   - [Summit](name)
+    - name: [Jing Xuan](name)
+    - hey, my name is [John Doe](name)
+    - I am [Jane](name)
+    - [Bob](name) is my name
+    - [Somesh](name)
+    - [Mu Rong](name)
+    - [Sherri](name)
+    regex: ^.*(?:name is|name:|my name is|hey|I'm|call me|you can call me|people call me|friends call me|they call me|most people call me|everyone calls me|it's|it is).*\[(?P<name>[\w\s\-']+?)\].*$
+
+
+- intent: greet
+  examples: |
+    - hey
+    - hello
+    - hi
+    - hello there
+    - good morning
+    - good evening
+    - moin
+    - hey there
+    - let's go
+    - hey dude
+    - goodmorning
+    - goodevening
+    - good afternoon
+
+# - intent: goodbye
+#   examples: |
+#     - cu
+#     - good by
+#     - cee you later
+#     - good night
+#     - bye
+#     - goodbye
+#     - have a nice day
+#     - see you around
+#     - bye bye
+#     - see you later
+
+# - intent: affirm
+#   examples: |
+#     - yes
+#     - y
+#     - indeed
+#     - of course
+#     - that sounds good
+#     - correct
+
+# - intent: deny
+#   examples: |
+#     - no
+#     - n
+#     - never
+#     - I don't think so
+#     - don't like that
+#     - no way
+#     - not really
+
+# - intent: mood_great
+#   examples: |
+#     - perfect
+#     - great
+#     - amazing
+#     - feeling like a king
+#     - wonderful
+#     - I am feeling very good
+#     - I am great
+#     - I am amazing
+#     - I am going to save the world
+#     - super stoked
+#     - extremely good
+#     - so so perfect
+#     - so good
+#     - so perfect
+
+# - intent: mood_unhappy
+#   examples: |
+#     - my day was horrible
+#     - I am sad
+#     - I don't feel very well
+#     - I am disappointed
+#     - super sad
+#     - I'm so sad
+#     - sad
+#     - very sad
+#     - unhappy
+#     - not good
+#     - not very good
+#     - extremly sad
+#     - so saad
+#     - so sad
+
+# - intent: bot_challenge
+#   examples: |
+#     - are you a bot?
+#     - are you a human?
+#     - am I talking to a bot?
+#     - am I talking to a human?

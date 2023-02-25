@@ -1,0 +1,121 @@
+version: "3.1"
+
+entities:
+  - name
+  - needs
+
+slots:
+  name:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: name
+  needs:
+    type: text
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: needs
+  needs_help:
+    type: bool
+    influence_conversation: true
+    mappings:
+      - type: from_entity
+        entity: needs
+    initial_value: false
+
+
+intents:
+  - greet
+  - goodbye
+  - affirm
+  - deny
+  - mood_great
+  - mood_unhappy
+  - bot_challenge
+  - supply_user_info
+  - provide_user_info
+
+actions:
+  - utter_ask_for_contact_info
+  - utter_acknowledge_provided_info
+  - utter_ask_for_needs
+  - action_store_needs
+  - utter_confirm_needs
+  - utter_needs_stored
+  - utter_needs_not_stored
+  - utter_greet
+  - utter_cheer_up
+  - utter_did_that_help
+  - utter_happy
+  - utter_goodbye
+  - utter_iamabot
+  - utter_fallback
+  - utter_help
+  - utter_unknown_intent
+  - action_activate_help
+  - action_upload_file
+
+responses:
+  utter_ask_for_contact_info:
+  - text: "Hey! What is your name?"
+
+  utter_acknowledge_provided_info:
+  - text: Thanks {name} for providing your info!
+
+  utter_ask_for_needs:
+  - text: "How can I assist you?"
+
+  utter_greet:
+  - text: "Hey! How are you?"
+
+  utter_cheer_up:
+  - text: "Here is something to cheer you up:"
+    image: "https://i.imgur.com/nGF1K8f.jpg"
+
+  utter_did_that_help:
+  - text: "Did that help you?"
+
+  utter_happy:
+  - text: "Great, carry on!"
+
+  utter_goodbye:
+  - text: "Bye"
+
+  utter_iamabot:
+  - text: "I am a bot, powered by Rasa."
+
+  utter_confirm_needs:
+  - text: "Okay, so you want {needs}?"
+
+  utter_apologize_needs:
+  - text: "I'm sorry, I didn't understand what you meant. Could you please rephrase it?"
+
+  utter_needs_stored:
+  - text: "Got it, I will see what I can do for you!"
+
+  utter_needs_not_stored:
+  - text: "I couldn't store your needs. Please try again later."
+
+  utter_fallback:
+  - text: "I'm sorry, I didn't get that. Could you please repeat what you said?"
+
+  utter_help:
+  - text: "Hey {name} please upload your PDF File or webpage link!"
+
+  utter_unknown_intent:
+  - text: "I'm sorry, I'm not sure what you mean. Could you please rephrase it?"
+
+rules:
+- rule: say 'I am a bot' anytime the user challenges
+  steps:
+  - intent: bot_challenge
+  - action: utter_iamabot
+
+
+
+
+session_config:
+  session_expiration_time: 60
+  carry_over_slots_to_new_session: true
