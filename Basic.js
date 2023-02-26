@@ -82,7 +82,6 @@ function Basic(){
         paddingRight: '0px',
         borderRadius: '30px',
         boxShadow: '0 16px 20px 0 rgba(0,0,0,0.4)'
-        
 
     }
     const styleHeader = {
@@ -96,7 +95,7 @@ function Basic(){
         //maxWidth : '32rem',
         borderTop : '1px solid black',
         borderRadius: '0px 0px 30px 30px',
-        backgroundColor: '#071E22',
+        backgroundColor: '#8012c4',
         
         
     }
@@ -109,18 +108,18 @@ function Basic(){
     }
 
     return (
-      <div className='top'>
+      <div>
         {/* <button onClick={()=>rasaAPI("shreyas","hi")}>Try this</button> */}
         
 
         <div className="container">
-        <div className="body" >
+        <div className="row justify-content-center">
             
                 <div className="card" style={stylecard}>
-                    <div className="AIHeader">
-                        <h1 className="title">AI Assistant</h1>
+                    <div className="cardHeader text-white" style={styleHeader}>
+                        <h1 style={{marginBottom:'0px'}}>AI Assistant</h1>
                         {botTyping ? <h6>Bot Typing....</h6> : null}
-                         
+                        
                         
                         
                     </div>
@@ -153,7 +152,7 @@ function Basic(){
                     <div className="cardFooter text-white" style={styleFooter}>
                         <div className="row">
                             <form style={{display: 'flex'}} onSubmit={handleSubmit}>
-                                <div className='inputField'>
+                                <div className="col-10" style={{paddingRight:'0px'}}>
                                     <input onChange={e => setInputMessage(e.target.value)} value={inputMessage} type="text" className="msginp"></input>
                                 </div>
                                 <div className="col-2 cola">
