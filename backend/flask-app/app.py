@@ -16,7 +16,7 @@ from urllib.request import urlopen
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS']= 'Content-Type'
-openai.api_key = openai.api_key = os.getenv('OPENAI_API_KEY')
+openai.api_key = os.getenv('OPENAI_API_KEY')
 
 
 
@@ -103,31 +103,35 @@ def splitfile(file, page):
 
 @app.route("/chat", methods=("GET", "POST"))
 def chat():
-    # Get the user's message from the request body
-    message = request.json["message"]
+    if request.method == "POST":
+        # Get the user's message from the request body
+        message = request.json["message"]
 
-    # Get the previous conversation history from the request body
-    prev_messages = request.json.get("prev_messages", "")
+        # Get the previous conversation history from the request body
+        prev_messages = request.json.get("prev_messages", "")
 
-    # Set up the OpenAI API request with all previous messages included in the prompt
-    prompt = prev_messages + f"User: {message}\nAI:"
-    response = openai.Completion.create(
-        engine="text-davinci-002",
-        prompt=prompt,
-        max_tokens=1024,
-        n=1,
-        stop=None,
-        temperature=0.5,
-    )
+        # Set up the OpenAI API request with all previous messages included in the prompt
+        prompt = prev_messages + f"User: {message}\nAI:"
+        response = openai.Completion.create(
+            engine="text-davinci-002",
+            prompt=prompt,
+            max_tokens=1024,
+            n=1,
+            stop=None,
+            temperature=0.5,
+        )
 
-    # Get the AI's response from the OpenAI API response
-    ai_message = response.choices[0].text.strip()
+        # Get the AI's response from the OpenAI API response
+        ai_message = response.choices[0].text.strip()
 
-    # Concatenate all conversation history into the next message prompt
-    next_messages = prev_messages + f"User: {message}\nAI: {ai_message}\n"
+        # Concatenate all conversation history into the next message prompt
+        next_messages = prev_messages + f"User: {message}\nAI: {ai_message}\n"
 
-    # Return the AI's response and the updated conversation history as a JSON object
-    return jsonify({"message": ai_message, "prev_messages": next_messages})
+        # Return the AI's response and the updated conversation history as a JSON object
+        return jsonify({"message": ai_message, "prev_messages": next_messages})
+    else:
+        # Render the chat.html template for GET requests
+        return render_template("chat.html")
 
 
 @app.route("/generateMedia", methods=("GET", "POST"))
