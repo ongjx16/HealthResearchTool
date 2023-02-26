@@ -56,26 +56,30 @@ const GenerateMedia = ({ input = "summarised text" }) => {
         </button>
       </div>
 
-      <div className="mt-6">
-  <div className="mb-2">
-    <Link to="/Chatbot" className="underline">
-      ask questions
+      <div className="mt-6 space-y-2 flex flex-col">
+  <div>
+    <Link to="/Chatbot" className="underline text-blue-600 hover:text-blue-800">
+      <button className="w-40 h-13 bg-slate-900 hover:bg-slate-500 text-white text-lg rounded-md px-4 py-1 ">
+        Ask Questions
+      </button>
     </Link>
   </div>
-  <div className="mb-2">
-    <Link to="/" className="underline">
-      back to upload file
+  <div>
+    <Link to="/" className="underline text-blue-600 hover:text-blue-800">
+      <button className="w-40 h-13 bg-slate-900 hover:bg-slate-500 text-white font-bold text-lg rounded-md px-4 py-1 ">
+        Back to Upload File
+      </button>
     </Link>
   </div>
-  <div className="mb-2">
-    <Link to="/RelatedArticles" className="underline">
-      ask for related articles
+  <div>
+    <Link to="/RelatedArticles" className="underline text-blue-600 hover:text-blue-800 ">
+      <button className="w-40 h-13 bg-slate-900 hover:bg-slate-500 text-white font-bold text-lg rounded-md px-4 py-1 ">
+        Ask for Related Articles
+      </button>
     </Link>
   </div>
 </div>
-
-    </div>
-  );
-};
-
+</div>
+);
+}
 export default GenerateMedia;

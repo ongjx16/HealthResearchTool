@@ -68,16 +68,30 @@ function App() {
             </div>
             <div className="bg-white m-5 border-gray-200 border-[1px] border-dashed rounded-lg p-10">
                 <div>
-                    <text>summarise page immediately after file upload</text>
+                    <text className="text-2xl font-bold mb-6">Summarise Page Immediately After File pload</text>
                 </div>
                 <div>
-                    <Link to="/RelatedArticles" className="underline">ask for related articles</Link>
+                <Link to="/RelatedArticles">
+  <button className="w-40 h-13 bg-slate-900 hover:bg-slate-500 text-white font-bold text-lg rounded-md px-4 py-1">
+    Ask for Related Articles
+  </button>
+</Link>
                 </div>
                 <div>
-                    <Link to="/Chatbot" className="underline">ask questions</Link>
+                <Link to="/Chatbot">
+  <button className="w-40 h-13 bg-slate-900 hover:bg-slate-500 text-white font-bold text-lg rounded-md px-4 py-1">
+    Ask Questions
+  </button>
+</Link>
+
                 </div>
                 <div>
-                    <Link to="/GenerateMedia" className="underline">generate media</Link>
+                <Link to="/GenerateMedia">
+  <button className="w-40 h-13 bg-slate-900 hover:bg-slate-500 text-white font-bold text-lg rounded-md px-4 py-1">
+    Generate Media
+  </button>
+</Link>
+
                 </div>
 
             </div>

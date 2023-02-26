@@ -1,23 +1,36 @@
-import React from "react";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 
-const RelatedArticles = ({ input = "summarised text"}) =>{
-    const [isLoading, setisLoading] = useState(false);
-    return (
-        <div className="bg-white m-5 border-gray-200 border-[1px] border-dashed rounded-lg p-10">
-            <text>generate related articles</text>
-            <div>
-                    <Link to="/Chatbot" className="underline">ask questions</Link>
-                </div>
-                <div>
-                    <Link to="/" className="underline">back to upload file</Link>
-                </div>
+const RelatedArticles = () => {
+  const [isLoading, setIsLoading] = useState(false);
+
+  return (
+    <div className="bg-white m-5 border-gray-200 border-[1px] border-dashed rounded-lg p-10">
+      <h1 className="text-2xl font-bold mb-6">Generate Related Articles</h1>
+      <div className="mt-6 space-y-2 flex flex-col">
+        <div>
+          <Link
+            to="/Chatbot"
+            className="underline text-blue-600 hover:text-blue-800"
+          >
+            <button className="w-40 h-13 bg-slate-900 hover:bg-slate-500 text-white text-lg rounded-md px-4 py-1">
+              Ask Questions
+            </button>
+          </Link>
         </div>
+        <div>
+          <Link
+            to="/"
+            className="underline text-blue-600 hover:text-blue-800"
+          >
+            <button className="w-40 h-13 bg-slate-900 hover:bg-slate-500 text-white font-bold text-lg rounded-md px-4 py-1">
+              Back to Upload File
+            </button>
+          </Link>
+        </div>
+      </div>
+    </div>
+  );
+};
 
-
-
-    );}
-
-
-    export default RelatedArticles;
+export default RelatedArticles;
