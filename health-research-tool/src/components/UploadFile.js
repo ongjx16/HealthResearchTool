@@ -6,9 +6,7 @@ import { Link } from "react-router-dom";
 function UploadFile() {
     const [isLoading, setisLoading] = useState(true);
     return (
-        
-<text>not sure if need</text>
-
+        <text>not sure if need</text>
     );
 }
 
