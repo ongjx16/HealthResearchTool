@@ -1,4 +1,4 @@
-import { useState, useEffect} from "react";
+import { useState, useEffect } from "react";
 import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
 import Basic from "./components/Basic";
 import Button from "./components/Button";
@@ -16,21 +16,22 @@ function App() {
   const [summarised, setSummarised] = useState({});
   const [selectedFile, setSelectedFile] = useState(null);
   const [uploadedFile, setUploadedFile] = useState(null);
+  const [isFileSelected, setFileSelected] = useState(false);
   const [isFileUploaded, setFileUploaded] = useState(false);
 
   const fileChangeHandler = (event) => {
     setSelectedFile(event.target.files[0]);
-    setFileUploaded(true);
+    setFileSelected(true);
   };
 
   const handleSubmission = () => {
     console.log("submitted")
     setFileUploaded(true)
-    
+
     // Create an object of formData
     const formData = new FormData();
-    
-     
+
+
     // Update the formData object
     formData.append(
       "myFile",
@@ -38,7 +39,7 @@ function App() {
       selectedFile.name
     );
     setUploadedFile(formData)
-   
+
     // Details of the uploaded file
     console.log(selectedFile);
   };
@@ -47,7 +48,7 @@ function App() {
     axios.post("https://murong2602.pythonanywhere.com/", uploadedFile)
       .then(response => {
         console.log(response.data);
-        
+
         setisLoading(false)
       })
       .catch(error => {
@@ -61,7 +62,8 @@ function App() {
     <div className="w-full h-full ml-24 md:ml-60 mr-8 mt-4">
       <div className="flex flex-col justify-center border-gray-100 border-[1px] rounded-lg">
         <div className="w-full flex flex-col justify-center">
-          <h1 className="font-bold text-center text-xl p-10">MedSimplifieD</h1>
+          <h1 className="font-bold text-center text-3xl pt-10">MedSimplifieD</h1>
+          <text className="font-italic text-center p-10"> Your very own smart AI tool to analyse and generate insights to medical resarch papers</text>
           <div className="place-content-center justify-center border-gray-100 border-[1px] h-400 rounded-xl mx-10 mb-6 shadow-lg">
             <div className="w-full flex flex-col justify-center items-center ">
               <div className="flex flex-row justify-center bg-gray-100 rounded-full w-fit text-sm m-5">
@@ -71,13 +73,12 @@ function App() {
                   <Routes>
                     <Route path='/' element={<div className="bg-white m-5 border-gray-200 border-[1px] border-dashed rounded-lg p-10">
                       <div className="text-center m-20">
-                        {isFileUploaded ? (<div>
+                        {isFileSelected ? (<div>
                           <p>Filename: {selectedFile.name}</p>
                           <p>Filetype: {selectedFile.type}</p>
                           <p>Size in bytes: {selectedFile.size}</p>
                         </div>) : (<div>
-                          <text>Click to </text>
-                          <input type="file" onChange={fileChangeHandler}/></div>)}
+                          <input type="file" onChange={fileChangeHandler} /></div>)}
                       </div>
                       {(function () {
                         if (isLoading) {
@@ -102,29 +103,12 @@ function App() {
                         }
                       })()}
                       <div className="flex flex-row justify-center m-5">
-                        <div
-                          className="w-36 cursor-pointer text-gray-500 transition-all duration-200 hover:text-gray-700 text-center mr-8 p-2 rounded-md hover:bg-gray-100"
-                        >
-                          Cancel
-                        </div>
+
                         <div className="w-36 text-right ml-8">
                           <Button text="Upload" onClickHandler={handleSubmission} />
                         </div>
                       </div>
                       <div className="bg-white m-5 border-gray-200 border-[1px] border-dashed rounded-lg p-10">
-                        <div>
-                          <text>summarise page immediately after file upload</text>
-                        </div>
-                        <div>
-                          <Link to="/RelatedArticles" className="underline">ask for related articles</Link>
-                        </div>
-                        <div>
-                          <Link to="/Chatbot" className="underline">ask questions</Link>
-                        </div>
-                        <div>
-                          <Link to="/GenerateMedia" className="underline">generate media</Link>
-                        </div>
-
                       </div>
                     </div>} />
                     <Route path='/GenerateMedia' element={<GenerateMedia />} />
