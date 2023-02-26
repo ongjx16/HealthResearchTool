@@ -57,13 +57,23 @@ const GenerateMedia = ({ input = "summarised text" }) => {
       </div>
 
       <div className="mt-6">
-        <Link to="/Chatbot" className="underline mr-6">
-          ask questions
-        </Link>
-        <Link to="/" className="underline">
-          back to upload file
-        </Link>
-      </div>
+  <div className="mb-2">
+    <Link to="/Chatbot" className="underline">
+      ask questions
+    </Link>
+  </div>
+  <div className="mb-2">
+    <Link to="/" className="underline">
+      back to upload file
+    </Link>
+  </div>
+  <div className="mb-2">
+    <Link to="/RelatedArticles" className="underline">
+      ask for related articles
+    </Link>
+  </div>
+</div>
+
     </div>
   );
 };
