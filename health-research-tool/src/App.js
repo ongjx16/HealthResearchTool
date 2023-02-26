@@ -36,7 +36,6 @@ function App() {
     formData.append(
       "myFile",
       selectedFile,
-      selectedFile.name
     );
     setUploadedFile(formData)
 
@@ -45,15 +44,25 @@ function App() {
   };
 
   useEffect(() => {
-    axios.post("https://murong2602.pythonanywhere.com/", uploadedFile)
-      .then(response => {
-        console.log(response.data);
+    setisLoading(true)
+    // axios.post("https://murong2602.pythonanywhere.com/", uploadedFile)
+    //   .then(response => {
+    //     console.log(response.data);
 
-        setisLoading(false)
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    //     setisLoading(false)
+    //   })
+    //   .catch(error => {
+    //     console.log(error);
+    //   });
+    fetch("https://murong2602.pythonanywhere.com/file", {
+      method: "POST",
+      body: selectedFile
+    }).then(response => {
+      // handle response from Flask server
+      console.log(response)
+      setisLoading(false)
+    }).catch(error => {
+      console.error(error);})
   }, [isFileUploaded])
 
 
