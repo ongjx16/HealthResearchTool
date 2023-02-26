@@ -16,7 +16,7 @@ from urllib.request import urlopen
 app = Flask(__name__)
 cors = CORS(app)
 app.config['CORS_HEADERS']= 'Content-Type'
-openai.api_key = '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'
+openai.api_key = openai.api_key = os.getenv('OPENAI_API_KEY')
 
 
 
