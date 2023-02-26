@@ -66,9 +66,9 @@ function App() {
           <text className="font-italic text-center p-10"> Your very own smart AI tool to analyse and generate insights to medical resarch papers</text>
           <div className="place-content-center justify-center border-gray-100 border-[1px] h-400 rounded-xl mx-10 mb-6 shadow-lg">
             <div className="w-full flex flex-col justify-center items-center ">
-              <div className="flex flex-row justify-center bg-gray-100 rounded-full w-fit text-sm m-5">
+              <div className="flex flex-row justify-center bg-gray-100 rounded-full w-fit text-sm m-5 ">
               </div>
-              <div className="bg-gray-100 w-full p-2">
+              <div className="bg-gray-100 w-full p-2 h-96">
                 <Router>
                   <Routes>
                     <Route path='/' element={<div className="bg-white m-5 border-gray-200 border-[1px] border-dashed rounded-lg p-10">
